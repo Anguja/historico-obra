@@ -26,6 +26,16 @@
       <!-- The datasource is deployed as WEB-INF/historico-obra-ds.xml, you
          can find it in the source at src/main/webapp/WEB-INF/historico-obra-ds.xml -->
       <jta-data-source>java:jboss/datasources/historico-obraDS</jta-data-source>
+      <class>py.com.anguja.historico_obra.model.Cliente</class>
+      <class>py.com.anguja.historico_obra.model.HistObra</class>
+      <class>py.com.anguja.historico_obra.model.Moneda</class>
+      <class>py.com.anguja.historico_obra.model.ObraTarea</class>
+      <class>py.com.anguja.historico_obra.model.Rol</class>
+      <class>py.com.anguja.historico_obra.model.TipoObra</class>
+      <class>py.com.anguja.historico_obra.model.TipoTarea</class>
+      <class>py.com.anguja.historico_obra.model.UnidadMedida</class>
+      <class>py.com.anguja.historico_obra.model.Usuario</class>
+      <class>py.com.anguja.historico_obra.model.UsuarioRol</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
