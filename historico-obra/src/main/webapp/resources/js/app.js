@@ -2,8 +2,8 @@
  * @author Ricardo Ramírez
  */
 'use strict';
-var app = angular
-		.module("historico-app", [ 'ngRoute', 'loginController','historicoServices' ]);
+var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
+		'historicoServices' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -20,9 +20,14 @@ app.config([ '$routeProvider', function($routeProvider) {
 	});
 } ]);
 
-app.run([ '$rootScope', '$location', function($rootScope, $location) {
+app.run([ '$rootScope', '$location', 'SecurityService',
+		function($rootScope, $location, SecurityService) {
 
-	$rootScope.$on('$locationChangeStart', function(event) {
-
-	})
-} ])
+			$rootScope.$on('$locationChangeStart', function(event) {
+				SecurityService.verifySession(function(response) {
+					if ($location.path() !== '/' && !response.success) {
+						$location.url("/");
+					}
+				})
+			})
+		} ])
