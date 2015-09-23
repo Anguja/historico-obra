@@ -3,7 +3,7 @@
  */
 'use strict';
 var app = angular
-		.module("historico-app", [ 'ngRoute', 'historicoController' ]);
+		.module("historico-app", [ 'ngRoute', 'loginController','historicoServices' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
