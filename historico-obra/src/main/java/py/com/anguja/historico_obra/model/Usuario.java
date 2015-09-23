@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
 	@Column(name="fecha_registro")
 	private Date fechaRegistro;
 
-	private String nombre;
+	private String nombres;
 
 	@Column(name="nombre_usuario")
 	private String nombreUsuario;
@@ -109,12 +109,12 @@ public class Usuario implements Serializable {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public String getNombres() {
+		return this.nombres;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 
 	public String getNombreUsuario() {
