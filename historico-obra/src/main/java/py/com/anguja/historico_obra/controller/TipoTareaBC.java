@@ -1,11 +1,9 @@
-package py.com.anguja.historico_obra.controler;
+package py.com.anguja.historico_obra.controller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import py.com.anguja.historico_obra.model.Rol;
 import py.com.anguja.historico_obra.model.TipoTarea;
-import py.com.anguja.historico_obra.persistence.RolDAO;
 import py.com.anguja.historico_obra.persistence.TipoTareaDAO;
 
 @RequestScoped

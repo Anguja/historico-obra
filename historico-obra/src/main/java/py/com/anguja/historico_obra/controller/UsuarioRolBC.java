@@ -3,10 +3,6 @@ package py.com.anguja.historico_obra.controller;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-
-
-
-import py.com.anguja.historico_obra.model.Usuario;
 import py.com.anguja.historico_obra.model.UsuarioRol;
 import py.com.anguja.historico_obra.persistence.UsuarioRolDAO;
 

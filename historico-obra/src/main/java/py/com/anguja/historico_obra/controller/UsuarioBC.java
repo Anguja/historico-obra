@@ -13,7 +13,6 @@ import py.com.anguja.historico_obra.persistence.UsuarioDAO;
 public class UsuarioBC {
 	
 	@Inject
-	
 	private UsuarioDAO usuarioDAO;
 	
 	public Usuario buscarUsuario(Integer idUsuario) {

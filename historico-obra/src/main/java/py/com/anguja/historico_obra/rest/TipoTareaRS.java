@@ -12,9 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import py.com.anguja.historico_obra.controler.TipoObraBC;
-import py.com.anguja.historico_obra.controler.TipoTareaBC;
-import py.com.anguja.historico_obra.model.TipoObra;
+import py.com.anguja.historico_obra.controller.TipoTareaBC;
 import py.com.anguja.historico_obra.model.TipoTarea;
 
 @Path("/tipoTareas")

@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import py.com.anguja.historico_obra.controler.RolBC;
+import py.com.anguja.historico_obra.controller.RolBC;
 import py.com.anguja.historico_obra.model.Rol;
 
 @Path("/roles")

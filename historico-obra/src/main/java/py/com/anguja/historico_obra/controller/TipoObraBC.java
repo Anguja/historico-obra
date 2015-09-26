@@ -1,4 +1,4 @@
-package py.com.anguja.historico_obra.controler;
+package py.com.anguja.historico_obra.controller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
