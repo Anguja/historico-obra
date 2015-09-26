@@ -2,8 +2,9 @@
  * @author Ricardo Ramírez
  */
 'use strict';
+
 var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
-		'historicoServices' ]);
+		'historicoServices','usuarioController' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -11,7 +12,7 @@ app.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : "resources/templates/login.html"
 	})
 
-	$routeProvider.when("/home", {
+	$routeProvider.when("/home/:idUsuario", {
 		templateUrl : "resources/templates/home.html"
 	})
 

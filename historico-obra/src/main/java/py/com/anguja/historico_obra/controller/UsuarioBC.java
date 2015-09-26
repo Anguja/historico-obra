@@ -15,9 +15,13 @@ public class UsuarioBC {
 	@Inject
 	private UsuarioDAO usuarioDAO;
 	
-	public Usuario buscarUsuario(Integer idUsuario) {
+	public Usuario buscarUsuario(Long idUsuario) {
 		return this.usuarioDAO.buscarUsuario(idUsuario);
 		 
+	}
+	
+	public Usuario buscarUsuario(String nombreUsuario){
+		return this.usuarioDAO.buscarUsuario(nombreUsuario);
 	}
 	
 	public void crearUsuario(Usuario usuario){

@@ -1,6 +1,5 @@
 package py.com.anguja.historico_obra.rest;
 
-
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,33 +16,40 @@ import py.com.anguja.historico_obra.controller.UsuarioBC;
 import py.com.anguja.historico_obra.model.Usuario;
 
 @Path("/usuarios")
-
 public class UsuarioRS {
-	
+
 	@Inject
 	private UsuarioBC usuarioBC;
-	
+
 	@POST
 	@Path("/crearUsuarios")
 	@Consumes(MediaType.APPLICATION_JSON)
-	
+
 	public Response crearUsuario(Usuario usuario) {
 		this.usuarioBC.crearUsuario(usuario);
 		return Response.ok().build();
 	}
-	
+
 	@GET
 	@Path("/getUsuario/{idUsuario}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response obtener(@PathParam("idUsuario") Integer idUsuario) {
+	public Response obtener(@PathParam("idUsuario") Long idUsuario) {
 		return Response.ok(this.usuarioBC.buscarUsuario(idUsuario)).build();
-	
+
 	}
-	
+
+	@GET
+	@Path("/getUsuarioPorNombre/{nombreUsuario}/")
+	@Produces("application/json;charset=utf-8")
+	public Response obtenerUsuarioPorNombre(@PathParam("nombreUsuario") String nombreUsuario) {
+		return Response.ok(this.usuarioBC.buscarUsuario(nombreUsuario)).build();
+
+	}
+
 	@PUT
 	@Path("/actualizarUsuarios")
 	@Consumes(MediaType.APPLICATION_JSON)
-	
+
 	public Response actualizarUsuario(Usuario usuario) {
 		this.usuarioBC.actualizarUsuario(usuario);
 		return Response.ok().build();
@@ -52,7 +58,7 @@ public class UsuarioRS {
 	@DELETE
 	@Path("/eliminarUsuarios")
 	@Consumes(MediaType.APPLICATION_JSON)
-	
+
 	public Response eliminarUsuario(Long idUsuario) {
 		this.usuarioBC.eliminarUsuario(idUsuario);
 		return Response.ok().build();

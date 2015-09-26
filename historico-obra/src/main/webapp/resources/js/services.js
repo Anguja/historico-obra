@@ -49,3 +49,22 @@ appServices.factory('SecurityService', [ '$rootScope', '$http',
 
 			return security;
 		} ]);
+
+appServices.factory('UsuarioServices', [ '$http', function($http) {
+	
+	var usuario = {};
+	
+	usuario.getUsuario = function(idUsuario, callbackFunction){
+		$http({
+			url : 'rest/usuarios/getUsuario/'+idUsuario,
+			method : "GET",
+		}).success(function(data) {
+			callbackFunction(data);
+		}).error(function(data) {
+			callbackFunction(data);
+		})
+	};
+	
+	return usuario;
+
+} ]);
