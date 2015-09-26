@@ -1,30 +1,76 @@
+<title>Login - Sistema Volta</title>
 
-<center>
-	<div class="Acceso" ng-controller="LoginController">
+<div class="navbar navbar-fixed-top">
+
+	<div class="navbar-inner">
+
+		<div class="container">
+
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a> <a class="brand" href="#"> Volta <i class="icon-bolt"></i>
+			</a>
+
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+					<li class=""><a href="#" class=""> <i
+							class="icon-chevron-left"></i> Volver al inicio
+					</a></li>
+				</ul>
+
+			</div>
+			<!--/.nav-collapse -->
+
+		</div>
+		<!-- /container -->
+
+	</div>
+	<!-- /navbar-inner -->
+
+</div>
+<!-- /navbar -->
+
+<div class="account-container">
+
+	<div class="content clearfix" ng-controller="LoginController">
 		<div ng-show="error" class="alert alert-danger">{{error}}</div>
-		<img src="resources/images/ic_account_circle_black_48dp.png"
-			style="opacity: 0.5; margin-bottom: 10px;"/>
-		<form name="form" role="form" >
-			<div class="form-group">
-				<label for="username">Usuario</label></i> <input type="text"
-					name="username" id="username" class="form-control input-sm"
-					ng-model="username" required /> <span
-					ng-show="form.username.$dirty && form.username.$error.required"
-					class="help-block">Usuario requerido</span>
+		<form name="form" role="form">
+			<h1>Iniciar Sesión</h1>
+			<div class="login-fields">
+
+				<p>Ingrese sus datos.</p>
+
+				<div class="field">
+					<label for="username">Usuario</label> <input type="text"
+						id="username" name="username" ng-model="username"
+						placeholder="Nombre usuario"
+						class="login username-field form-control" required /><span
+						ng-show="form.username.$dirty && form.username.$error.required"
+						class="help-block">Usuario requerido</span>
+				</div>
+				<!-- /field -->
+
+				<div class="field">
+					<label for="clave">Contraseña:</label> <input type="password"
+						id="clave" name="clave" ng-model="clave" placeholder="Contraeña"
+						class="login password-field form-control" required /><span
+						ng-show="form.clave.$dirty && form.clave.$error.required"
+						class="help-block">Contraseña requerida</span>
+				</div>
+				<!-- /password -->
+
 			</div>
-			<div class="form-group">
-				<label for="clave">Contraseña</label><input type="password"
-					name="clave" id="clave" class="form-control input-sm" ng-model="clave"
-					required /> <span
-					ng-show="form.clave.$dirty && form.clave.$error.required"
-					class="help-block">Contraseña requerida</span>
-			</div>
-			<div class="form-actions">
+
+			<div class="login-actions">
 				<button type="submit" ng-click="login()"
 					ng-disabled="form.$invalid || dataLoading"
-					class="btn btn-primary">Login</button>
+					class="button btn btn-success">Login</button>
 			</div>
 		</form>
 
 	</div>
-</center>
+	<!-- /content -->
+
+</div>
+<!-- /account-container -->
