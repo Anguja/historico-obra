@@ -4,7 +4,7 @@
 'use strict';
 
 var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
-		'historicoServices','usuarioController' ]);
+		'historicoServices', 'usuarioController', 'toaster' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -12,8 +12,8 @@ app.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : "resources/templates/login.html"
 	})
 
-	$routeProvider.when("/home/:idUsuario", {
-		templateUrl : "resources/templates/home.html"
+	$routeProvider.when("/usuario/:idUsuario", {
+		templateUrl : "resources/templates/usuario/usuario.html"
 	})
 
 	$routeProvider.otherwise({

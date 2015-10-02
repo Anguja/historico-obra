@@ -10,7 +10,7 @@ historico.controller('LoginController', [
 				SecurityService.doLogin($scope.username, $scope.clave,
 						function(response) {
 							if (response.success) {
-								$location.url('/home/'+response.usuario.idUsuario);
+								$location.url('/usuario/'+response.usuario.idUsuario);
 							} else {
 								$scope.error = response.message;
 								$scope.dataLoading = false;

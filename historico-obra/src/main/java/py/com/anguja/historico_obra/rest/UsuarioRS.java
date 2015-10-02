@@ -2,7 +2,6 @@ package py.com.anguja.historico_obra.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -22,12 +21,11 @@ public class UsuarioRS {
 	private UsuarioBC usuarioBC;
 
 	@POST
-	@Path("/crearUsuarios")
+	@Path("/crearUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
-
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response crearUsuario(Usuario usuario) {
-		this.usuarioBC.crearUsuario(usuario);
-		return Response.ok().build();
+		return Response.ok().entity(this.usuarioBC.crearUsuario(usuario)).build();
 	}
 
 	@GET
@@ -52,15 +50,6 @@ public class UsuarioRS {
 
 	public Response actualizarUsuario(Usuario usuario) {
 		this.usuarioBC.actualizarUsuario(usuario);
-		return Response.ok().build();
-	}
-
-	@DELETE
-	@Path("/eliminarUsuarios")
-	@Consumes(MediaType.APPLICATION_JSON)
-
-	public Response eliminarUsuario(Long idUsuario) {
-		this.usuarioBC.eliminarUsuario(idUsuario);
 		return Response.ok().build();
 	}
 }

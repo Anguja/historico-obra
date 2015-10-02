@@ -2,6 +2,11 @@ package py.com.anguja.historico_obra.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +16,13 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "USUARIO_IDUSUARIO_GENERATOR", sequenceName = "USUARIO_ID_USUARIO_SEQ")
+	@SequenceGenerator(name = "USUARIO_IDUSUARIO_GENERATOR", sequenceName = "USUARIO_ID_USUARIO_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_IDUSUARIO_GENERATOR")
 	@Column(name = "id_usuario")
 	private Long idUsuario;
@@ -55,6 +62,11 @@ public class Usuario implements Serializable {
 	public Usuario(Long idUsuario) {
 		super();
 		this.idUsuario = idUsuario;
+	}
+
+	public Usuario(String nombreUsuario) {
+		super();
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public Long getIdUsuario() {

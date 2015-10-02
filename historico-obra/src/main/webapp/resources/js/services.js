@@ -50,13 +50,13 @@ appServices.factory('SecurityService', [ '$rootScope', '$http',
 			return security;
 		} ]);
 
-appServices.factory('UsuarioServices', [ '$http', function($http) {
-	
+appServices.factory('UsuarioService', [ '$http', function($http) {
+
 	var usuario = {};
-	
-	usuario.getUsuario = function(idUsuario, callbackFunction){
+
+	usuario.getUsuario = function(idUsuario, callbackFunction) {
 		$http({
-			url : 'rest/usuarios/getUsuario/'+idUsuario,
+			url : 'rest/usuarios/getUsuario/' + idUsuario,
 			method : "GET",
 		}).success(function(data) {
 			callbackFunction(data);
@@ -64,7 +64,26 @@ appServices.factory('UsuarioServices', [ '$http', function($http) {
 			callbackFunction(data);
 		})
 	};
-	
+
+	usuario.crearUsuario = function(usuario, callbackFunction) {
+		$http({
+			url : 'rest/usuarios/crearUsuario',
+			method : "POST",
+			data : {
+				nombres : usuario.nombres,
+				apellido : usuario.apellidos,
+				cedula : usuario.cedula,
+				correo : usuario.correo,
+				nombreUsuario : usuario.nombreUsuario,
+				password : usuario.password
+			}
+		}).success(function(data) {
+			callbackFunction(data);
+		}).error(function(data) {
+			callbackFunction(data);
+		})
+	};
+
 	return usuario;
 
 } ]);
