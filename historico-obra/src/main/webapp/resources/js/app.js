@@ -3,8 +3,9 @@
  */
 'use strict';
 
-var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
-		'historicoServices', 'usuarioController', 'toaster' ]);
+var app = angular.module("historico-app",
+		[ 'ngRoute', 'loginController', 'historicoServices',
+				'usuarioController', 'toaster', 'usuarioServices' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -13,7 +14,8 @@ app.config([ '$routeProvider', function($routeProvider) {
 	})
 
 	$routeProvider.when("/usuario/:idUsuario", {
-		templateUrl : "resources/templates/usuario/usuario.html"
+		templateUrl : "resources/templates/usuario/usuario.html",
+		controller : "UsuarioController"
 	})
 
 	$routeProvider.otherwise({
