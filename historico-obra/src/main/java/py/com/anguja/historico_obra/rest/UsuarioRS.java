@@ -6,7 +6,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -29,25 +28,16 @@ public class UsuarioRS {
 	}
 
 	@GET
-	@Path("/getUsuario/{idUsuario}/")
+	@Path("/getUsuarioSesion")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response obtener(@PathParam("idUsuario") Long idUsuario) {
-		return Response.ok(this.usuarioBC.buscarUsuario(idUsuario)).build();
-
-	}
-
-	@GET
-	@Path("/getUsuarioPorNombre/{nombreUsuario}/")
-	@Produces("application/json;charset=utf-8")
-	public Response obtenerUsuarioPorNombre(@PathParam("nombreUsuario") String nombreUsuario) {
-		return Response.ok(this.usuarioBC.buscarUsuario(nombreUsuario)).build();
+	public Response obtener() {
+		return Response.ok(this.usuarioBC.buscarUsuarioSesion()).build();
 
 	}
 
 	@PUT
-	@Path("/actualizarUsuarios")
+	@Path("/actualizarUsuario")
 	@Consumes(MediaType.APPLICATION_JSON)
-
 	public Response actualizarUsuario(Usuario usuario) {
 		this.usuarioBC.actualizarUsuario(usuario);
 		return Response.ok().build();

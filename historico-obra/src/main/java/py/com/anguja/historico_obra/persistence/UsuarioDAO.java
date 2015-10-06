@@ -20,15 +20,15 @@ public class UsuarioDAO {
 	public Usuario buscarUsuario(Long idUsuario) {
 		Session session = (Session) em.getDelegate();
 		Query query = session
-				.createQuery("SELECT new Usuario(nombreUsuario) FROM Usuario WHERE idUsuario = :idUsuario");
+				.createQuery("SELECT new Usuario(idUsuario, nombreUsuario) FROM Usuario WHERE idUsuario = :idUsuario");
 		query.setLong("idUsuario", idUsuario);
 		return (Usuario) query.uniqueResult();
 	}
 
 	public Usuario buscarUsuario(String nombreUsuario) {
 		Session session = (Session) em.getDelegate();
-		Query query = session
-				.createQuery("SELECT new Usuario(idUsuario) FROM Usuario WHERE nombreUsuario = :nombreUsuario");
+		Query query = session.createQuery(
+				"SELECT new Usuario(idUsuario, nombreUsuario) FROM Usuario WHERE nombreUsuario = :nombreUsuario");
 		query.setString("nombreUsuario", nombreUsuario);
 		return (Usuario) query.uniqueResult();
 	}

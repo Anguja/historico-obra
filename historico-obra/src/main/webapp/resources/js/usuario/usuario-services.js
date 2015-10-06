@@ -9,9 +9,9 @@ appServices.factory('UsuarioService', [ '$http', function($http) {
 
 	var usuario = {};
 
-	usuario.getUsuario = function(idUsuario, callbackFunction) {
+	usuario.getUsuarioSesion = function(callbackFunction) {
 		$http({
-			url : 'rest/usuarios/getUsuario/' + idUsuario,
+			url : 'rest/usuarios/getUsuarioSesion',
 			method : "GET",
 		}).success(function(data) {
 			callbackFunction(data);

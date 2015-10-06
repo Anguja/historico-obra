@@ -59,9 +59,10 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(Long idUsuario) {
+	public Usuario(Long idUsuario, String nombreUsuario) {
 		super();
 		this.idUsuario = idUsuario;
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public Usuario(String nombreUsuario) {

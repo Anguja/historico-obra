@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.util.SimpleByteSource;
 
@@ -20,9 +21,9 @@ public class UsuarioBC {
 	@Inject
 	private UsuarioDAO usuarioDAO;
 
-	public Usuario buscarUsuario(Long idUsuario) {
-		return this.usuarioDAO.buscarUsuario(idUsuario);
+	public Usuario buscarUsuarioSesion() {
 
+		return this.usuarioDAO.buscarUsuario(SecurityUtils.getSubject().getPrincipal().toString());
 	}
 
 	public Usuario buscarUsuario(String nombreUsuario) {

@@ -11,31 +11,21 @@ appUsuario
 		'UsuarioController',
 		[
 		 '$scope',
-		 '$routeParams',
 		 'SecurityService',
 		 'UsuarioService',
 		 '$location',
-		 function($scope, $routeParams, SecurityService,
-				 UsuarioService, $location) {
+		 function($scope, SecurityService, UsuarioService,
+				 $location) {
 
-			 $scope.usuarioLogin = {};
-
-			 UsuarioService
-			 .getUsuario(
-					 $routeParams.idUsuario,
-					 function(response) {
-						 $scope.usuarioLogin = response.nombreUsuario;
-					 })
-
-					 $scope.tabs = [
-					                {
-					                	title : "Crear Usuario",
-					                	url : "resources/templates/usuario/crearUsuario.html"
-					                },
-					                {
-					                	title : "Buscar Usuario",
-					                	url : "resources/templates/usuario/buscarUsuario.html"
-					                } ];
+			 $scope.tabs = [
+			                {
+			                	title : "Crear Usuario",
+			                	url : "resources/templates/usuario/crearUsuario.html"
+			                },
+			                {
+			                	title : "Buscar Usuario",
+			                	url : "resources/templates/usuario/buscarUsuario.html"
+			                } ];
 
 			 $scope.currentTab = 'resources/templates/usuario/crearUsuario.html';
 

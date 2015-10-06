@@ -6,21 +6,26 @@
 			<a class="btn btn-navbar" data-toggle="collapse"
 				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span>
-			</a> <a class="brand"> Volta <i class="icon-bolt"></i>
+			</a> <a href="#/home" class="brand"> Volta <i class="icon-bolt"></i>
 			</a>
 
 			<div class="nav-collapse">
 				<ul class="nav pull-right">
+
+					<li class=""><a href="#/home" class=""> <i
+							class="icon-chevron-left"></i> Volver al inicio
+					</a></li>
+
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown"> <i class="icon-cog"></i>
 							{{usuarioLogin}} <b class="caret"></b>
 					</a>
 
 						<ul class="dropdown-menu">
-							<li><a><i class="icon-key"></i> <span>Cambiar
+							<li><a href=""><i class="icon-key"></i> <span>Cambiar
 										contraseña</span></a></li>
-							<li><a ng-click="logout()"><i class="icon-off"></i> <span>Cerrar
-										sesión</span></a></li>
+							<li><a href="" ng-click="logout()"><i class="icon-off"></i>
+									<span>Cerrar sesión</span></a></li>
 						</ul></li>
 				</ul>
 
