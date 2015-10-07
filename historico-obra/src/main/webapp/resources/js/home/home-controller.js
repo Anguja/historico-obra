@@ -10,13 +10,21 @@ appHome.controller('HomeController', [ '$scope', 'SecurityService',
 			$scope.bookmarks = [ {
 				title : "Usuarios",
 				url : "#/usuario",
-				icon: "icon-user"
+				icon : "icon-user"
 			}, {
-				title : "Reporte",
-				url : "",
-				icon: "icon-signal"
+				title : "Roles",
+				url : "#/home",
+				icon : "icon-legal"
+			}, {
+				title : "Permisos",
+				url : "#/home",
+				icon : "icon-lock"
+			}, {
+				title : "Reportes",
+				url : "#/home",
+				icon : "icon-signal"
 			} ];
-			
+
 			$scope.logout = function() {
 				SecurityService.doLogout(function(response) {
 					$location.url("/");
