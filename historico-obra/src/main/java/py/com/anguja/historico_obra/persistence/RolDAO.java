@@ -18,12 +18,15 @@ public class RolDAO {
 	
 	@Transactional
 	public void crearRol(Rol rol) {
+		
 		em.persist(rol);
 	}
 	
 	@Transactional
 	public void actualizarRol(Rol rol) {
-		em.merge(rol);
+		Rol ro = em.getReference(Rol.class, rol.getIdRol());
+		ro.setNombre(rol.getNombre());
+		//ro.setUsuarioRols(rol.getUsuarioRols());
 	}
 	
 	@Transactional
