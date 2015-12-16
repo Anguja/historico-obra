@@ -1,6 +1,8 @@
 package py.com.anguja.historico_obra.controller;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,24 +14,66 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.util.SimpleByteSource;
 
 import py.com.anguja.historico_obra.dto.Respuesta;
+import py.com.anguja.historico_obra.dto.UsuarioDTO;
 import py.com.anguja.historico_obra.model.Usuario;
 import py.com.anguja.historico_obra.persistence.UsuarioDAO;
 
 @RequestScoped
-public class UsuarioBC {
+public class UsuarioBC extends GenericController<Usuario> {
 
 	@Inject
 	private UsuarioDAO usuarioDAO;
 
+	/**
+	 * Método que obtiene la lista de usuarios, aplicando determinados filtros.
+	 * 
+	 * @author Ricardo Ramírez
+	 * 
+	 * @param filtro
+	 * 
+	 * @param pageSize
+	 *            Cantidad de filas por páginasactualizarContrasenha
+	 * @param start
+	 *            Número de página del table (OFFSET)
+	 * @param sortField
+	 *            Columna por el cuál se debe realizar el ORDER BY
+	 * @param sortAsc
+	 *            Valor booleano en caso que sea TRUE el ORDER BY será ASC; en
+	 *            caso contrario será DESC
+	 * 
+	 * @return {@link UsuarioDTO} Listado de usuarios, con su cabecera.
+	 */
+	public UsuarioDTO filtrarUsuarios(String filtro, int pageSize, int start, String sortField, boolean sortAsc) {
+		Map<String, String> filters = this.parseFilters(filtro, "usuario.nombres", "usuario.apellido",
+				"usuario.nombreUsuario", "usuario.cedula");
+
+		List<Usuario> usuarios = this.usuarioDAO.obtenerUsuarios(pageSize, start, sortField, sortAsc, filters);
+		int totalNumberOfRows = this.usuarioDAO.obtenerCantidadPorFiltro(filters);
+
+		return (UsuarioDTO) this.marshallDTO(usuarios, totalNumberOfRows, pageSize, new UsuarioDTO());
+	}
+
+	/**
+	 * @return {@link Usuario}
+	 */
 	public Usuario buscarUsuarioSesion() {
 
 		return this.usuarioDAO.buscarUsuario(SecurityUtils.getSubject().getPrincipal().toString());
 	}
 
+	/**
+	 * @param nombreUsuario
+	 * @return {@link Usuario}
+	 */
 	public Usuario buscarUsuario(String nombreUsuario) {
 		return this.usuarioDAO.buscarUsuario(nombreUsuario);
 	}
 
+	/**
+	 * @param usuario
+	 *            ver {@link Usuario}
+	 * @return {@link Respuesta}
+	 */
 	public Respuesta crearUsuario(Usuario usuario) {
 		Respuesta respuesta = new Respuesta();
 
@@ -61,6 +105,10 @@ public class UsuarioBC {
 		return respuesta;
 	}
 
+	/**
+	 * @param usuario
+	 *            ver {@link Usuario}
+	 */
 	public void actualizarUsuario(Usuario usuario) {
 		this.usuarioDAO.actualizarUsuario(usuario);
 
