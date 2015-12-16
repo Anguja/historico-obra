@@ -2,23 +2,29 @@ package py.com.anguja.historico_obra.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Date;
 import java.util.List;
-
 
 /**
  * The persistent class for the usuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="USUARIO_IDUSUARIO_GENERATOR", sequenceName="USUARIO_ID_USUARIO_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USUARIO_IDUSUARIO_GENERATOR")
-	@Column(name="id_usuario")
+	@SequenceGenerator(name = "USUARIO_IDUSUARIO_GENERATOR", sequenceName = "USUARIO_ID_USUARIO_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_IDUSUARIO_GENERATOR")
+	@Column(name = "id_usuario")
 	private Long idUsuario;
 
 	private Boolean activo;
@@ -30,27 +36,38 @@ public class Usuario implements Serializable {
 	private String correo;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="fecha_actualizacion")
+	@Column(name = "fecha_actualizacion")
 	private Date fechaActualizacion;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="fecha_registro")
+	@Column(name = "fecha_registro")
 	private Date fechaRegistro;
 
 	private String nombres;
 
-	@Column(name="nombre_usuario")
+	@Column(name = "nombre_usuario")
 	private String nombreUsuario;
 
 	private String password;
 
 	private String salt;
 
-	//bi-directional many-to-one association to UsuarioRol
-	@OneToMany(mappedBy="usuario")
+	// bi-directional many-to-one association to UsuarioRol
+	@OneToMany(mappedBy = "usuario")
 	private List<UsuarioRol> usuarioRols;
 
 	public Usuario() {
+	}
+
+	public Usuario(Long idUsuario, String nombreUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public Usuario(String nombreUsuario) {
+		super();
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public Long getIdUsuario() {

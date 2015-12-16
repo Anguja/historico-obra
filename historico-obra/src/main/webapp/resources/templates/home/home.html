@@ -1,0 +1,77 @@
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a> <a class="brand"> Volta <i class="icon-bolt"></i>
+			</a>
+
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"> <i class="icon-cog"></i>
+							{{usuarioLogin}} <b class="caret"></b>
+					</a>
+
+						<ul class="dropdown-menu">
+							<li><a href=""><i class="icon-key"></i> <span>Cambiar
+										contraseña</span></a></li>
+							<li><a href="" ng-click="logout()"><i class="icon-off"></i>
+									<span>Cerrar sesión</span></a></li>
+						</ul></li>
+				</ul>
+
+				<form class="navbar-search pull-right">
+					<input type="text" class="search-query" placeholder="Buscar"
+						ng-model="buscador">
+				</form>
+
+			</div>
+			<!--/.nav-collapse -->
+
+		</div>
+		<!-- /container -->
+
+	</div>
+	<!-- /navbar-inner -->
+
+</div>
+<!-- /navbar -->
+
+</br>
+</br>
+<div class="main">
+	<div class="main-inner">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div class="widget">
+						<div class="widget-header">
+							<i class="icon-bookmark"></i>
+							<h3>Accesos directos</h3>
+						</div>
+						<!-- /widget-header -->
+						<div class="widget-content">
+							<div class="shortcuts">
+								<a ng-repeat="bookmark in bookmarks | filter:buscador"
+									href="{{bookmark.url}}" class="shortcut"><i
+									class="shortcut-icon {{bookmark.icon}}"></i><span
+									class="shortcut-label">{{bookmark.title}}</span> </a>
+							</div>
+							<!-- /shortcuts -->
+						</div>
+						<!-- /widget-content -->
+					</div>
+					<!-- /widget -->
+				</div>
+				<!-- /span6 -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /main-inner -->
+</div>
+<!-- /main -->

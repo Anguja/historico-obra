@@ -1,4 +1,4 @@
-var historico = angular.module("loginController", []);
+var historico = angular.module('loginController', []);
 
 historico.controller('LoginController', [
 		'$scope',

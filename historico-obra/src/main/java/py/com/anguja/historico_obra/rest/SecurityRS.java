@@ -1,6 +1,7 @@
 package py.com.anguja.historico_obra.rest;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,6 +13,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
+import py.com.anguja.historico_obra.controller.UsuarioBC;
+import py.com.anguja.historico_obra.dto.LoginDTO;
 import py.com.anguja.historico_obra.dto.Respuesta;
 
 /**
@@ -24,6 +27,9 @@ import py.com.anguja.historico_obra.dto.Respuesta;
 @Path("/security")
 @RequestScoped
 public class SecurityRS {
+
+	@Inject
+	private UsuarioBC usuarioBC;
 
 	/**
 	 * @author Ricardo Ramírez
@@ -43,22 +49,24 @@ public class SecurityRS {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Respuesta doLogin(UsernamePasswordToken token) {
-		Respuesta respuesta = new Respuesta();
+	public LoginDTO doLogin(UsernamePasswordToken token) {
+		LoginDTO loginDTO = new LoginDTO();
 		try {
 
 			SecurityUtils.getSubject().login(token);
 
 			if (SecurityUtils.getSubject().isAuthenticated()) {
-				respuesta.setSuccess(true);
+				loginDTO.setSuccess(true);
 			}
 
+			loginDTO.setUsuario(usuarioBC.buscarUsuario(token.getUsername()));
+
 		} catch (AuthenticationException ex) {
-			respuesta.setSuccess(false);
-			respuesta.setMessage("Credenciales incorrectas.");
+			loginDTO.setSuccess(false);
+			loginDTO.setMessage("Credenciales incorrectas.");
 		}
 
-		return respuesta;
+		return loginDTO;
 	}
 
 	@Path("/doLogout")

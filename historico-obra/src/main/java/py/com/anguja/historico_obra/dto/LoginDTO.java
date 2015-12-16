@@ -4,20 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import py.com.anguja.historico_obra.model.Usuario;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
-public class Respuesta {
+public class LoginDTO {
 
-	private String message;
 	private Boolean success;
 
-	public Respuesta() {
+	private String message;
 
+	private Usuario usuario;
+
+	public Boolean getSuccess() {
+		return success;
 	}
 
-	public Respuesta(String message, Boolean success) {
-		super();
-		this.message = message;
+	public void setSuccess(Boolean success) {
 		this.success = success;
 	}
 
@@ -25,16 +28,16 @@ public class Respuesta {
 		return message;
 	}
 
-	public void setMessage(String menssage) {
-		this.message = menssage;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public Boolean isSuccess() {
-		return success;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setSuccess(Boolean success) {
-		this.success = success;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
