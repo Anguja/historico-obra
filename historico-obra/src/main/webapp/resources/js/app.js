@@ -5,7 +5,8 @@
 
 var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
 		'historicoServices', 'usuarioController', 'toaster', 'usuarioServices',
-		'angular-loading-bar', 'homeController' ]);
+		'angular-loading-bar', 'homeController', 'monedaController',
+		'monedaServices', 'smart-table', 'ngDialog']);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -23,6 +24,11 @@ app.config([ '$routeProvider', function($routeProvider) {
 		controller : "HomeController"
 	})
 
+	$routeProvider.when("/moneda", {
+		templateUrl : "resources/templates/moneda/moneda.html",
+		controller : "MonedaController"
+	})
+	
 	$routeProvider.otherwise({
 		redirectTo : '/'
 	});

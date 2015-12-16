@@ -2,6 +2,11 @@ package py.com.anguja.historico_obra.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Date;
 
 
@@ -10,12 +15,14 @@ import java.util.Date;
  * 
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @NamedQuery(name="Moneda.findAll", query="SELECT m FROM Moneda m")
 public class Moneda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MONEDA_IDMONEDA_GENERATOR", sequenceName="MONEDA_ID_MONEDA_SEQ")
+	@SequenceGenerator(name="MONEDA_IDMONEDA_GENERATOR", sequenceName="MONEDA_ID_MONEDA_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MONEDA_IDMONEDA_GENERATOR")
 	@Column(name="id_moneda")
 	private Long idMoneda;
