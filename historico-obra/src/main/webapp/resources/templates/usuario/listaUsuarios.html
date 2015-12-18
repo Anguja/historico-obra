@@ -24,11 +24,11 @@
 					st-class-descent="fa_admin fa-sort-desc"
 					st-class-ascent="fa_admin fa-sort-asc">Cédula Identidad</th>
 
-				<th class="td-actions"></th>
+				<th style="width: 10%;" class="td-actions">Acciones</th>
 			</tr>
 			<tr>
-				<th colspan="5" style="width: 100% !important;"><input st-search
-					placeholder="Buscar..." type="search"></input></th>
+				<th colspan="5" style="width: 100% !important;"><input
+					st-search placeholder="Buscar..." type="search"></input></th>
 			</tr>
 		</thead>
 		<tbody class="scroll-tbody" ng-show="!isLoading">
@@ -37,7 +37,7 @@
 				<td style="width: 25%;" ng-click="openDetails(usuario)">{{::usuario.apellido}}</td>
 				<td style="width: 20%;" ng-click="openDetails(usuario)">{{::usuario.nombreUsuario}}</td>
 				<td style="width: 10%;" ng-click="openDetails(usuario)">{{::usuario.cedula}}</td>
-				<td class="td-actions"><a href="javascript:;"
+				<td style="width: 10%;" class="td-actions"><a href="javascript:;"
 					class="btn btn-small btn-success"><i
 						class="btn-icon-only icon-ok"> </i></a><a href="javascript:;"
 					class="btn btn-danger btn-small"><i
@@ -50,10 +50,9 @@
 					style="color: #6494B1;"></i></td>
 			</tr>
 		</tbody>
-		<tfoot class="text-center">
-			<tr>
-				<td class="text-center" st-pagination="" st-items-by-page="5"
-					colspan="5"></td>
+		<tfoot>
+			<tr>	
+				<td st-pagination="" st-items-by-page="5" colspan="5"></td>
 			</tr>
 		</tfoot>
 	</table>
