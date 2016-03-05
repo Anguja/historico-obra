@@ -15,7 +15,7 @@ appTtarea
 		 'TtareaService',
 		 '$location',
 		 function($scope, SecurityService, TtareaService,
-				 $location) {crearTtarea(ttarea)
+				 $location) {
 
 			 $scope.tabs = [
 			                {

@@ -15,7 +15,7 @@ appObra
 		 'TobraService',
 		 '$location',
 		 function($scope, SecurityService, TobraService,
-				 $location) {crearTobra(tobra)
+				 $location) {
 
 			 $scope.tabs = [
 			                {
