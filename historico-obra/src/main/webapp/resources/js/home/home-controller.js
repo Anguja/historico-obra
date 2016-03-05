@@ -23,6 +23,7 @@ appHome.controller('HomeController', [ '$scope', 'SecurityService',
 				title : "Reportes",
 				url : "#/home",
 				icon : "icon-signal"
+<<<<<<< HEAD
 			}, {
 				title : "Tipo Obra",
 				url : "#/tobra",
@@ -33,6 +34,13 @@ appHome.controller('HomeController', [ '$scope', 'SecurityService',
 				icon : "icon-signal"
 			} 
 			];
+=======
+			},{
+				title : "Moneda",
+				url : "#/moneda",
+				icon : "icon-money"
+			} ];
+>>>>>>> 6df0f2125fddff3f2fa3c567634fcc2b59f01d1c
 
 			$scope.logout = function() {
 				SecurityService.doLogout(function(response) {

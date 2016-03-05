@@ -3,7 +3,7 @@
  */
 'use strict;'
 
-var appServices = angular.module('usuarioServices', []);
+var appServices = angular.module('usuarioServices', ['ngResource']);
 
 appServices.factory('UsuarioService', [ '$http', function($http) {
 
@@ -41,4 +41,8 @@ appServices.factory('UsuarioService', [ '$http', function($http) {
 
 	return usuario;
 
+} ]);
+
+appServices.factory('UsuarioListService', [ '$resource', function($resource) {
+	return $resource("rest/usuarios", {});
 } ]);

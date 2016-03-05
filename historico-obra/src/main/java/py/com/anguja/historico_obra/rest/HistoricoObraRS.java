@@ -1,7 +1,6 @@
 package py.com.anguja.historico_obra.rest;
 
 import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -11,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import py.com.anguja.historico_obra.controller.HistoricoObraBC;
 
-@ApplicationPath("/rest")
+@Path("/rest")
 public class HistoricoObraRS {
 
 	@Inject

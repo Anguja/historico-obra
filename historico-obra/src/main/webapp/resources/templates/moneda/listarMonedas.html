@@ -1,0 +1,76 @@
+<div class="tab-pane" id="formcontrols"
+	ng-controller="listarMonedaController">
+	
+	<fieldset>
+		<h2>Lista</h2>
+		</br>
+	
+		<table st-table="array" class="table table-striped">
+			<tr>
+				<th>Cotización</th>
+				<th>Descripción</th>
+				<th>Acción</th>
+			</tr>
+		  <tr ng-repeat="moneda in array">
+		    <td>{{ moneda.cotizacion }}</td>
+		    <td>{{ moneda.descripcionMoneda }}</td>
+		    <td>
+				<button type="button" ng-click="abrirEditarPopUp(moneda)" class="btn btn-primary">
+					<i class="icon-edit">
+					</i>
+				</button>
+				<button type="button" ng-click="abrirEliminarMoneda(moneda)" class="btn btn-danger">
+					<i class="icon-eraser">
+					</i>
+				</button>
+			</td>
+		  </tr>
+		</table>
+	</fieldset>
+</div>
+
+ <script type="text/ng-template" id="myModalContent.html">
+	<div class="ngdialog-message">
+		<div class="ngdialog-message">
+            <h3>Actualizar Datos</h3>
+           	<fieldset>
+			 <form id="form" name="form" role="form" class="form-horizontal">
+				<input type="hidden" value="{{$scope.moneda.idMoneda}}" id="idMoneda" ng-model="moneda.idMoneda">
+				<div class="control-group">
+					<label class="control-label" for="cotizacion">Cotización</label>
+					<div class="controls">
+						<input type="text" id="cotizacion" value="{{$scope.moneda.cotizacion}}"
+						ng-model="moneda.cotizacion" required />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="descripcionMoneda">Descripción</label>
+					<div class="controls">
+						<input type="text" id="descripcionMoneda" value="{{$scope.moneda.descripcionMoneda}}"
+						ng-model="moneda.descripcionMoneda" required />
+					</div>
+				</div>
+			</form>
+		   </fieldset>
+        </div>
+        <div class="form-actions text-center">
+			<button type="button" class="btn btn-primary"
+					ng-click="actualizarMoneda(moneda)">Guardar</button>
+			<button class="btn btn-warning" ng-click="closeThisDialog('button')">Cancelar</button>
+		</div>
+	</div>
+ </script>
+ 
+<script type="text/ng-template" id="confirmModalContent.html">
+	<div class="ngdialog-message">
+		<div class="ngdialog-message">
+            <h3>Eliminar Datos</h3>
+			<p>¿Desea eliminar la moneda <b>{{moneda.descripcionMoneda}}</b>?</p>
+		</div>
+		<div class="form-actions text-center">
+			<button type="button" class="btn btn-primary"
+					ng-click="eliminarMoneda(moneda)">Eliminar</button>
+			<button class="btn btn-warning" ng-click="closeThisDialog('button')">Cancelar</button>
+		</div>
+	</div>
+</script>

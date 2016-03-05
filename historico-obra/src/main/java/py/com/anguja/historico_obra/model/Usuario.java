@@ -70,6 +70,18 @@ public class Usuario implements Serializable {
 		this.nombreUsuario = nombreUsuario;
 	}
 
+	public Usuario(Long idUsuario, Boolean activo, String apellido, String cedula, String correo, String nombres,
+			String nombreUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+		this.activo = activo;
+		this.apellido = apellido;
+		this.cedula = cedula;
+		this.correo = correo;
+		this.nombres = nombres;
+		this.nombreUsuario = nombreUsuario;
+	}
+
 	public Long getIdUsuario() {
 		return this.idUsuario;
 	}
