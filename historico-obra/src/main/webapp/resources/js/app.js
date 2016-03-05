@@ -4,11 +4,10 @@
 'use strict';
 
 var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
-		'usuarioController', 'tobraController', 'ttareaController', 
-		'toaster', 'usuarioServices', 'tobraServices', 'ttareaServices', 'historicoServices', 
-		'angular-loading-bar', 'homeController', 'monedaController',
-		'monedaServices', 'smart-table', 'ngDialog' ]);
-
+		'usuarioController', 'tobraController', 'ttareaController', 'toaster',
+		'usuarioServices', 'tobraServices', 'ttareaServices',
+		'historicoServices', 'angular-loading-bar', 'homeController',
+		'monedaController', 'monedaServices', 'smart-table', 'ngDialog' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 
@@ -20,12 +19,12 @@ app.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : "resources/templates/usuario/usuario.html",
 		controller : "UsuarioController"
 	})
-	
+
 	$routeProvider.when("/tobra", {
 		templateUrl : "resources/templates/tobra/tobra.html",
 		controller : "TobraController"
 	})
-	
+
 	$routeProvider.when("/ttarea", {
 		templateUrl : "resources/templates/ttarea/ttarea.html",
 		controller : "TtareaController"
@@ -36,12 +35,11 @@ app.config([ '$routeProvider', function($routeProvider) {
 		controller : "HomeController"
 	})
 
-
 	$routeProvider.when("/moneda", {
 		templateUrl : "resources/templates/moneda/moneda.html",
 		controller : "MonedaController"
 	})
-	
+
 	$routeProvider.otherwise({
 		redirectTo : '/'
 	});
