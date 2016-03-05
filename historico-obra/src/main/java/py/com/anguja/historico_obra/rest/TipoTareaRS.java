@@ -32,8 +32,7 @@ public class TipoTareaRS {
 	@Path("/crearTipoTarea")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crearTipoTarea(TipoTarea tipoTarea) {
-		this.tipoTareaBC.crearTipoTarea(tipoTarea);
-		return Response.ok().build();
+		return Response.ok().entity(this.tipoTareaBC.crearTipoTarea(tipoTarea)).build();
 	}
 
 	@PUT

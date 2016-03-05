@@ -3,6 +3,8 @@ package py.com.anguja.historico_obra.controller;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import py.com.anguja.historico_obra.dto.Respuesta;
+import py.com.anguja.historico_obra.model.TipoObra;
 import py.com.anguja.historico_obra.model.TipoTarea;
 import py.com.anguja.historico_obra.persistence.TipoTareaDAO;
 
@@ -16,8 +18,14 @@ public class TipoTareaBC {
 		return this.tipoTareaDAO.buscarTipoTarea(idTipoTarea);
 	}
 
-	public void crearTipoTarea(TipoTarea tipoTarea) {
+	public Respuesta crearTipoTarea(TipoTarea tipoTarea) {
+		TipoTarea tt = this.tipoTareaDAO.buscarTipoTarea(tipoTarea.getDescripcionTipoTarea());
+
+		if (tt != null) {
+			return new Respuesta("Descripcion para Tipo Tarea ya existe", false);
+		}
 		this.tipoTareaDAO.crearTipoTarea(tipoTarea);
+		return new Respuesta("Tipo Obra creado", true);
 	}
 
 	public void actualizarTipoTarea(TipoTarea tipoTarea) {

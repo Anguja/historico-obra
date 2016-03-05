@@ -16,7 +16,7 @@ public class TipoObra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIPO_OBRA_IDTIPOOBRA_GENERATOR", sequenceName="TIPO_OBRA_ID_TIPO_OBRA_SEQ")
+	@SequenceGenerator(name="TIPO_OBRA_IDTIPOOBRA_GENERATOR", sequenceName="TIPO_OBRA_ID_TIPO_OBRA_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIPO_OBRA_IDTIPOOBRA_GENERATOR")
 	@Column(name="id_tipo_obra")
 	private Long idTipoObra;

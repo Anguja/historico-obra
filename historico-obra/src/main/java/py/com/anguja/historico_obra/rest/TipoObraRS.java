@@ -33,8 +33,7 @@ public class TipoObraRS {
 	@Path("/crearTipoObra")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crearTipoObra(TipoObra tipoObra) {
-		this.tipoObraBC.crearTipoObra(tipoObra);
-		return Response.ok().build();
+		return Response.ok().entity(this.tipoObraBC.crearTipoObra(tipoObra)).build();
 	}
 
 	@PUT

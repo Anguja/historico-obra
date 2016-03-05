@@ -4,7 +4,8 @@
 'use strict';
 
 var app = angular.module("historico-app", [ 'ngRoute', 'loginController',
-		'historicoServices', 'usuarioController', 'toaster', 'usuarioServices',
+		'usuarioController', 'tobraController', 'ttareaController', 
+		'toaster', 'usuarioServices', 'tobraServices', 'ttareaServices', 'historicoServices', 
 		'angular-loading-bar', 'homeController' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
@@ -17,12 +18,22 @@ app.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : "resources/templates/usuario/usuario.html",
 		controller : "UsuarioController"
 	})
+	
+	$routeProvider.when("/tobra", {
+		templateUrl : "resources/templates/tobra/tobra.html",
+		controller : "TobraController"
+	})
+	
+	$routeProvider.when("/ttarea", {
+		templateUrl : "resources/templates/ttarea/ttarea.html",
+		controller : "TtareaController"
+	})
 
 	$routeProvider.when("/home", {
 		templateUrl : "resources/templates/home/home.html",
 		controller : "HomeController"
 	})
-
+	
 	$routeProvider.otherwise({
 		redirectTo : '/'
 	});

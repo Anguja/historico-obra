@@ -1,0 +1,142 @@
+<toaster-container></toaster-container>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+
+			<a class="btn btn-navbar" data-toggle="collapse"
+				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span>
+			</a> <a href="#/home" class="brand"> Volta <i class="icon-bolt"></i>
+			</a>
+
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+
+					<li class=""><a href="#/home" class=""> <i
+							class="icon-home"></i> Volver al inicio
+					</a></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"> <i class="icon-cog"></i>
+							{{usuarioLogin}} <b class="caret"></b>
+					</a>
+
+						<ul class="dropdown-menu">
+							<li><a href=""><i class="icon-key"></i> <span>Cambiar
+										contraseña</span></a></li>
+							<li><a href="" ng-click="logout()"><i class="icon-off"></i>
+									<span>Cerrar sesión</span></a></li>
+						</ul></li>
+				</ul>
+
+				<form class="navbar-search pull-right">
+					<input type="text" class="search-query" placeholder="Buscar">
+				</form>
+
+			</div>
+			<!--/.nav-collapse -->
+
+		</div>
+		<!-- /container -->
+
+	</div>
+	<!-- /navbar-inner -->
+
+</div>
+<!-- /navbar -->
+
+
+
+
+
+<div class="subnavbar">
+
+	<div class="subnavbar-inner">
+
+		<div class="container">
+
+			<ul class="mainnav">
+
+				<li class="active"><a> <i class="icon-user"></i> <span>Tipo Obras</span>
+				</a></li>
+
+				<li class="  dropdown"><a href="javascript:;"
+					class="dropdown-toggle" data-toggle="dropdown"> <i
+						class="icon-long-arrow-down"></i> <span>Drops</span> <b
+						class="caret"></b>
+				</a>
+
+					<ul class="dropdown-menu">
+						<li><a href="icons.html">Icons</a></li>
+						<li><a href="faq.html">FAQ</a></li>
+						<li><a href="pricing.html">Pricing Plans</a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="signup.html">Signup</a></li>
+						<li><a href="error.html">404</a></li>
+					</ul></li>
+
+			</ul>
+
+		</div>
+		<!-- /container -->
+
+	</div>
+	<!-- /subnavbar-inner -->
+
+</div>
+<!-- /subnavbar -->
+
+
+<div class="main">
+
+	<div class="main-inner">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="span12">
+
+					<div class="widget ">
+
+						<div class="widget-header">
+							<i class="icon-user"></i>
+							<h3>Administrar Tipo Obras</h3>
+						</div>
+						<!-- /widget-header -->
+
+
+						<div class="widget-content">
+
+							<div class="tabbable">
+								<ul class="nav nav-tabs">
+									<li ng-repeat="tab in tabs"
+										ng-class="{active:isActiveTab(tab.url)}"><a
+										ng-click="onClickTab(tab)" data-toggle="tab">{{tab.title}}</a></li>
+								</ul>
+								<div id="mainView">
+									<div ng-include="currentTab"></div>
+								</div>
+								<br>
+
+							</div>
+
+						</div>
+						<!-- /widget-content -->
+
+					</div>
+					<!-- /widget -->
+
+				</div>
+				<!-- /span8 -->
+			</div>
+			<!-- /row -->
+
+		</div>
+		<!-- /container -->
+
+	</div>
+	<!-- /main-inner -->
+
+</div>
+<!-- /main -->

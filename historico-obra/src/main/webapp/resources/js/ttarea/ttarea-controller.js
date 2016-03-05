@@ -1,33 +1,33 @@
 /**
- * @author ricardo
+ * @author bdelpuerto
  */
 
 'use strict;'
 
-var appUsuario = angular.module('usuarioController', [ 'toaster' ]);
+var appTtarea = angular.module('ttareaController', [ 'toaster' ]);
 
-appUsuario
+appTtarea
 .controller(
-		'UsuarioController',
+		'TtareaController',
 		[
 		 '$scope',
 		 'SecurityService',
-		 'UsuarioService',
+		 'TtareaService',
 		 '$location',
-		 function($scope, SecurityService, UsuarioService,
-				 $location) {crearUsuario(usuario)
+		 function($scope, SecurityService, TtareaService,
+				 $location) {crearTtarea(ttarea)
 
 			 $scope.tabs = [
 			                {
-			                	title : "Crear Usuario",
-			                	url : "resources/templates/usuario/crearUsuario.html"
+			                	title : "Crear Tipo Tarea",
+			                	url : "resources/templates/ttarea/crearTtarea.html"
 			                },
 			                {
-			                	title : "Buscar Usuario",
-			                	url : "resources/templates/usuario/buscarUsuario.html"
+			                	title : "Buscar Tipo Tarea",
+			                	url : "resources/templates/ttarea/buscarTtarea.html"
 			                } ];
 
-			 $scope.currentTab = 'resources/templates/usuario/crearUsuario.html';
+			 $scope.currentTab = 'resources/templates/ttarea/crearTtarea.html';
 
 			 $scope.onClickTab = function(tab) {
 				 $scope.currentTab = tab.url;
@@ -45,26 +45,20 @@ appUsuario
 
 		 } ]);
 
-appUsuario
+appTtarea
 .controller(
-		'crearUsuarioController',
+		'crearTtareaController',
 		[
 		 '$scope',
-		 'UsuarioService',
+		 'TtareaService',
 		 'toaster',
-		 function($scope, UsuarioService, toaster) {
+		 function($scope, TtareaService, toaster) {
 
-			 $scope.usuario = {};
+			 $scope.ttarea = {};
 
-			 $scope.equalsPass = function() {
-				 return $scope.usuario.password == $scope.usuario.passwordConfirmation;
-			 }
-
-			 $scope.crearUsuario = function(usuario) {
-				 UsuarioService
-				 .crearUsuario(
-						 usuario,
-						 function(response) {
+			 $scope.crearTtarea = function(ttarea) {
+				 TtareaService
+				 .crearTtarea(ttarea, function(response) {
 							 if (response.success) {
 								 toaster
 								 .pop({
@@ -74,7 +68,7 @@ appUsuario
 									 timeout : 3000,
 									 showCloseButton : true
 								 });
-								 $scope.usuario = {};
+								 $scope.ttarea = {};
 							 } else {
 								 toaster
 								 .pop({

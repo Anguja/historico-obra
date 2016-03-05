@@ -17,7 +17,7 @@ public class TipoTarea implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIPO_TAREA_IDTIPOTAREA_GENERATOR", sequenceName="TIPO_TAREA_ID_TIPO_TAREA_SEQ")
+	@SequenceGenerator(name="TIPO_TAREA_IDTIPOTAREA_GENERATOR", sequenceName="TIPO_TAREA_ID_TIPO_TAREA_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIPO_TAREA_IDTIPOTAREA_GENERATOR")
 	@Column(name="id_tipo_tarea")
 	private Long idTipoTarea;
