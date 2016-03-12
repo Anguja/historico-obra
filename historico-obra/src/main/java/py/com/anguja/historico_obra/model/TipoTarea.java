@@ -1,7 +1,13 @@
 package py.com.anguja.historico_obra.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +17,8 @@ import java.util.List;
  * 
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @Table(name="tipo_tarea")
 @NamedQuery(name="TipoTarea.findAll", query="SELECT t FROM TipoTarea t")
 public class TipoTarea implements Serializable {
@@ -38,6 +46,25 @@ public class TipoTarea implements Serializable {
 	private List<ObraTarea> obraTareas;
 
 	public TipoTarea() {
+	}
+
+	public TipoTarea(Long idTipoTarea, String descripcionTipoTarea) {
+		super();
+		this.idTipoTarea = idTipoTarea;
+		this.descripcionTipoTarea = descripcionTipoTarea;
+	}
+
+	public TipoTarea(String descripcionTipoTarea) {
+		super();
+		this.descripcionTipoTarea = descripcionTipoTarea;
+	}
+
+	public TipoTarea(Long idTipoTarea, String descripcionTipoTarea, Date fechaActualizacion, Date fechaRegistro) {
+		super();
+		this.idTipoTarea = idTipoTarea;
+		this.descripcionTipoTarea = descripcionTipoTarea;
+		this.fechaActualizacion = fechaActualizacion;
+		this.fechaRegistro = fechaRegistro;
 	}
 
 	public Long getIdTipoTarea() {

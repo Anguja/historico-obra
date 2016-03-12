@@ -1,5 +1,7 @@
 package py.com.anguja.historico_obra.rest;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -33,7 +35,7 @@ public class TipoObraRS {
 	@Path("/crearTipoObra")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crearTipoObra(TipoObra tipoObra) {
-		return Response.ok().entity(this.tipoObraBC.crearTipoObra(tipoObra)).build();
+		return Response.ok("Creado").entity(this.tipoObraBC.crearTipoObra(tipoObra)).build();
 	}
 
 	@PUT

@@ -22,12 +22,13 @@ public class TipoObraDAO {
 	}
 	
 	public TipoObra buscarTipoObra(String descripcionTipoObra){
-		Session session = (Session) em.getDelegate();
-		Query query = session.createQuery(
-				"SELECT new TipoObra(idTipoObra, descripcionTipoObra, fechaActualizacion, fechaRegistro) FROM TipoObra WHERE descripcionTipoObra = :descripcionTipoObra");
-		query.setString("descripcionTipoObra", descripcionTipoObra);
-		return (TipoObra) query.uniqueResult();
-	}
+	Session session = (Session) em.getDelegate();
+	Query query = session.createQuery(
+			"SELECT new TipoObra(idTipoObra, descripcionTipoObra, fechaActualizacion, fechaRegistro) FROM TipoObra WHERE descripcionTipoObra = :descripcionTipoObra");
+	query.setString("descripcionTipoObra", descripcionTipoObra);
+	return (TipoObra) query.uniqueResult();
+}
+
 	
 	@Transactional
 	public void crearTipoObra(TipoObra tipoObra) {

@@ -1,5 +1,7 @@
 package py.com.anguja.historico_obra.rest;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -32,13 +34,14 @@ public class TipoTareaRS {
 	@Path("/crearTipoTarea")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crearTipoTarea(TipoTarea tipoTarea) {
-		return Response.ok().entity(this.tipoTareaBC.crearTipoTarea(tipoTarea)).build();
+		return Response.ok("Creado").entity(this.tipoTareaBC.crearTipoTarea(tipoTarea)).build();
 	}
 
 	@PUT
 	@Path("/actualizarTipoTarea")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response actualizarTipoTarea(TipoTarea tipoTarea) {
+		tipoTarea.setFechaActualizacion(new Date());
 		this.tipoTareaBC.actualizarTipoTarea(tipoTarea);
 		return Response.ok().build();
 	}

@@ -26,6 +26,7 @@ appServices.factory('TobraService', [ '$http', function($http) {
 			method : "POST",
 			data : {
 				descripcionTipoObra : tobra.descripcionTipoObra
+				
 			}
 		}).success(function(data) {
 			callbackFunction(data);

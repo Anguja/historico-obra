@@ -1,7 +1,13 @@
 package py.com.anguja.historico_obra.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import java.util.Date;
 
 
@@ -9,7 +15,10 @@ import java.util.Date;
  * The persistent class for the tipo_obra database table.
  * 
  */
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @Table(name="tipo_obra")
 @NamedQuery(name="TipoObra.findAll", query="SELECT t FROM TipoObra t")
 public class TipoObra implements Serializable {
@@ -33,6 +42,25 @@ public class TipoObra implements Serializable {
 	private Date fechaRegistro;
 
 	public TipoObra() {
+	}
+
+	public TipoObra(Long idTipoObra, String descripcionTipoObra) {
+		super();
+		this.idTipoObra = idTipoObra;
+		this.descripcionTipoObra = descripcionTipoObra;
+	}
+
+	public TipoObra(String descripcionTipoObra) {
+		super();
+		this.descripcionTipoObra = descripcionTipoObra;
+	}
+
+	public TipoObra(Long idTipoObra, String descripcionTipoObra, Date fechaActualizacion, Date fechaRegistro) {
+		super();
+		this.idTipoObra = idTipoObra;
+		this.descripcionTipoObra = descripcionTipoObra;
+		this.fechaActualizacion = fechaActualizacion;
+		this.fechaRegistro = fechaRegistro;
 	}
 
 	public Long getIdTipoObra() {

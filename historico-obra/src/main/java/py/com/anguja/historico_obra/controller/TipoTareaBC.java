@@ -1,5 +1,7 @@
 package py.com.anguja.historico_obra.controller;
 
+import java.util.Date;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -24,7 +26,11 @@ public class TipoTareaBC {
 		if (tt != null) {
 			return new Respuesta("Descripcion para Tipo Tarea ya existe", false);
 		}
+		
+		tipoTarea.setFechaRegistro(new Date());
+		tipoTarea.setFechaRegistro(new Date());
 		this.tipoTareaDAO.crearTipoTarea(tipoTarea);
+		
 		return new Respuesta("Tipo Obra creado", true);
 	}
 
